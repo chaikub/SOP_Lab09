@@ -2,7 +2,6 @@ package com.example.productservice.command;
 
 import com.example.productservice.event.ProductCreatedEvent;
 import org.axonframework.commandhandling.CommandHandler;
-import org.axonframework.eventhandling.EventHandler;
 import org.axonframework.eventsourcing.EventSourcingHandler;
 import org.axonframework.modelling.command.AggregateIdentifier;
 import org.axonframework.modelling.command.AggregateLifecycle;
@@ -21,7 +20,6 @@ public class ProductAggregate {
     private Integer quantity;
 
     public ProductAggregate(){
-
     }
 
     @CommandHandler
@@ -38,7 +36,7 @@ public class ProductAggregate {
     }
     @EventSourcingHandler
     public void on(ProductCreatedEvent productCreatedEvent){
-        this.productID = productCreatedEvent.getProductId();
+        this.productID = productCreatedEvent.getProductID();
         this.title = productCreatedEvent.getTitle();
         this.price = productCreatedEvent.getPrice();
         this.quantity = productCreatedEvent.getQuantity();
